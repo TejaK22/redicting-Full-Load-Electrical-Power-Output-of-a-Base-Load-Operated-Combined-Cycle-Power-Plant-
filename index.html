@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction of Electrical Output Power</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #800080;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .header nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+        .content {
+            background-color: #ffd966;
+            padding: 20px;
+        }
+        .content h2 {
+            font-size: 22px;
+        }
+        .form-section {
+            background-color: #ffd966;
+            padding: 20px;
+        }
+        .form-section h2 {
+            background-color: #005cbf;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin: 0;
+            margin-bottom: 20px;
+        }
+        .form-section form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .form-section form div {
+            flex: 1 1 45%;
+            margin-bottom: 10px;
+        }
+        .form-section label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-section input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-section button {
+            padding: 10px 20px;
+            background-color: #005cbf;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .prediction-result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>PREDICTION OF ELECTRICAL OUTPUT POWER</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Goto Predict</a>
+        </nav>
+    </div>
+    <div class="content">
+        <h2>PREDICTION OF ELECTRICAL OUTPUT POWER OF COMBINED CYCLE POWER PLANT</h2>
+        <form id="prediction-form">
+            <div>
+                <label for="ambient-temperature">Ambient Temperature (AT):</label>
+                <input type="text" id="ambient-temperature" name="ambient-temperature">
+            </div>
+            <div>
+                <label for="exhaust-vacuum">Exhaust Vacuum (V):</label>
+                <input type="text" id="exhaust-vacuum" name="exhaust-vacuum">
+            </div>
+            <div>
+                <label for="ambient-pressure">Ambient Pressure (AP):</label>
+                <input type="text" id="ambient-pressure" name="ambient-pressure">
+            </div>
+            <div>
+                <label for="relative-humidity">Relative Humidity (RH):</label>
+                <input type="text" id="relative-humidity" name="relative-humidity">
+            </div>
+            <div style="flex-basis: 100%; text-align: center;">
+                <button type="button" onclick="predictOutput()">Predict</button>
+            </div>
+        </form>
+        <div id="prediction-result" class="prediction-result" style="display: none;"></div>
+    </div>
+
+    <script>
+        function predictOutput() {
+            // Get form values
+            const at = document.getElementById('ambient-temperature').value;
+            const v = document.getElementById('exhaust-vacuum').value;
+            const ap = document.getElementById('ambient-pressure').value;
+            const rh = document.getElementById('relative-humidity').value;
+
+            // Mock prediction logic
+            const prediction = (parseFloat(at) * 0.1) + (parseFloat(v) * 0.2) + (parseFloat(ap) * 0.3) + (parseFloat(rh) * 0.4);
+
+            // Display the prediction result
+            const resultDiv = document.getElementById('prediction-result');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = `<strong>Predicted Electrical Output Power:</strong> ${prediction.toFixed(2)} MW`;
+        }
+    </script>
+</body>
+</html>
